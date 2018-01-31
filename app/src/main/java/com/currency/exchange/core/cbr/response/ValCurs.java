@@ -1,5 +1,5 @@
 
-package com.currency.exchange.api.models;
+package com.currency.exchange.core.cbr.response;
 
 import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.ElementList;

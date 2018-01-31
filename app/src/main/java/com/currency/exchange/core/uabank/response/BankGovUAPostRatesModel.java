@@ -1,5 +1,5 @@
 
-package com.currency.exchange.api.models;
+package com.currency.exchange.core.uabank.response;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

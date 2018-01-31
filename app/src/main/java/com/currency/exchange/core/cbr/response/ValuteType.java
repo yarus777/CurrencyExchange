@@ -1,9 +1,13 @@
 
-package com.currency.exchange.api.models;
+package com.currency.exchange.core.cbr.response;
 
 import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.Element;
 import org.simpleframework.xml.Root;
+
+import java.text.NumberFormat;
+import java.text.ParseException;
+import java.util.Locale;
 
 @Root(name = "ValuteType", strict = false)
 //@Namespace(reference = "")
@@ -18,60 +22,43 @@ public class ValuteType {
     @Element(name = "Name", required = false)
     private String name;
     @Element(name = "Value", required = false)
-    private Double value;
+    private String value;
     @Attribute(name = "ID", required = false)
     private String id;
-    
+
+    private NumberFormat mFormat;
 
     public ValuteType() {
+        mFormat = NumberFormat.getInstance(Locale.FRANCE);
     }
 
     public Integer getNumCode() {
         return numCode;
     }
 
-    public void setNumCode(Integer numCode) {
-        this.numCode = numCode;
-    }
-
     public String getCharCode() {
         return charCode;
-    }
-
-    public void setCharCode(String charCode) {
-        this.charCode = charCode;
     }
 
     public Integer getNominal() {
         return nominal;
     }
 
-    public void setNominal(Integer nominal) {
-        this.nominal = nominal;
-    }
-
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public Double getValue() {
-        return value;
-    }
-
-    public void setValue(Double value) {
-        this.value = value;
+        try {
+            return mFormat.parse(value).doubleValue();
+        } catch (ParseException e) {
+            e.printStackTrace();
+            return -1d;
+        }
     }
 
     public String getId() {
         return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
     }
 
 }

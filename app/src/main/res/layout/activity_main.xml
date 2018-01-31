@@ -3,12 +3,36 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.currency.exchange.MainActivity"
-    android:padding="5dp">
+    android:orientation="vertical"
+    android:padding="5dp"
+    tools:context="com.currency.exchange.MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="loadCbr"
+            android:text="Load RU" />
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="loadNbrb"
+            android:text="Load BY" />
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="loadUaBank"
+            android:text="Load UA" />
+    </LinearLayout>
+
 
     <android.support.v7.widget.RecyclerView
+        android:id="@+id/currency_recycle_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/currency_recycle_view" />
+        android:layout_height="match_parent" />
 
 </LinearLayout>
