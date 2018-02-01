@@ -9,11 +9,15 @@ import android.widget.Toast;
 
 import com.currency.exchange.adapters.CurrencyRatesRecyclerViewAdapter;
 import com.currency.exchange.core.CurrencyRatesModel;
+import com.currency.exchange.core.CurrencyServiceType;
 import com.currency.exchange.core.ExchangeRatesReceivedCallback;
 import com.currency.exchange.core.ICurrencyService;
-import com.currency.exchange.core.CurrencyServiceType;
 import com.currency.exchange.core.cbr.CbrService;
+import com.currency.exchange.core.eubank.EuBankService;
+import com.currency.exchange.core.lvbank.LvBankService;
+import com.currency.exchange.core.mdbank.MdBankService;
 import com.currency.exchange.core.nbrb.NbrbService;
+import com.currency.exchange.core.plbank.PlBankService;
 import com.currency.exchange.core.uabank.UaBankService;
 
 import java.util.HashMap;
@@ -58,10 +62,15 @@ public class MainActivity extends AppCompatActivity {
         mServices.put(CurrencyServiceType.Cbr, new CbrService());
         mServices.put(CurrencyServiceType.NbRb, new NbrbService());
         mServices.put(CurrencyServiceType.UaBank, new UaBankService());
+        mServices.put(CurrencyServiceType.LvBank, new LvBankService());
+        mServices.put(CurrencyServiceType.PlBank, new PlBankService());
+        mServices.put(CurrencyServiceType.EuBank, new EuBankService());
+        mServices.put(CurrencyServiceType.MdBank, new MdBankService());
     }
 
     public void loadCbr(View view) {
-        mServices.get(CurrencyServiceType.Cbr).getRates(receivedCallback);
+        mServices.get(CurrencyServiceType.EuBank).getRates(receivedCallback);
+        //mServices.get(CurrencyServiceType.Cbr).getRates(receivedCallback);
     }
 
     public void loadNbrb(View view) {

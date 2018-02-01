@@ -9,7 +9,6 @@ import java.util.List;
 
 
 @Root(name = "ValCurs", strict = false)
-//@Namespace(reference = "")
 public class ValCurs {
 
     @ElementList(name = "Valute", entry = "Valute", inline = true, required = false)
@@ -26,17 +25,11 @@ public class ValCurs {
         return valute;
     }
 
-    public void setValute(List<ValuteType> valute) {
-        this.valute = valute;
-    }
 
     public String getDate() {
         return date;
     }
 
-    public void setDate(String date) {
-        this.date = date;
-    }
 
     public String getName() {
         return name;

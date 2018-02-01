@@ -1,8 +1,12 @@
-package com.currency.exchange.core.cbr;
+package com.currency.exchange.core.mdbank;
 
 import com.currency.exchange.core.ExchangeRatesReceivedCallback;
 import com.currency.exchange.core.ICurrencyService;
 import com.currency.exchange.core.cbr.response.ValCurs;
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
@@ -12,14 +16,15 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.simplexml.SimpleXmlConverterFactory;
 
-public class CbrService implements ICurrencyService {
+public class MdBankService implements ICurrencyService {
 
-    private String API_URL = "http://www.cbr.ru/";
+    private String API_URL = "http://www.bnm.md";
 
-    private CbrApi mApi;
-    private CbrResponseConverter mConverter;
+    private MdBankApi mApi;
+    private MdBankResponseConverter mConverter;
+    private String mCurrentDate;
 
-    public CbrService() {
+    public MdBankService() {
         HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
         interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
         OkHttpClient client = new OkHttpClient.Builder().addInterceptor(interceptor).build();
@@ -29,12 +34,15 @@ public class CbrService implements ICurrencyService {
                 .client(client)
                 .addConverterFactory(SimpleXmlConverterFactory.createNonStrict())
                 .build();
-        mApi = retrofit.create(CbrApi.class);
-        mConverter = new CbrResponseConverter();
+        mApi = retrofit.create(MdBankApi.class);
+        mConverter = new MdBankResponseConverter();
+        DateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
+        Date date = new Date();
+        mCurrentDate = dateFormat.format(date);
     }
 
     public void getRates(final ExchangeRatesReceivedCallback callback) {
-        mApi.getCBRRates().enqueue(new Callback<ValCurs>() {
+        mApi.getMdBankRates(1,mCurrentDate).enqueue(new Callback<ValCurs>() {
             @Override
             public void onResponse(Call<ValCurs> call, Response<ValCurs> response) {
                 callback.onSuccess(mConverter.convert(response.body()));

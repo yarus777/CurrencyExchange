@@ -10,7 +10,6 @@ import java.text.ParseException;
 import java.util.Locale;
 
 @Root(name = "ValuteType", strict = false)
-//@Namespace(reference = "")
 public class ValuteType {
 
     @Element(name = "NumCode", required = false)

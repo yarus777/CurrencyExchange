@@ -5,7 +5,7 @@ import com.currency.exchange.core.CurrencyRatesModel;
 import com.currency.exchange.core.cbr.response.ValCurs;
 import com.currency.exchange.core.cbr.response.ValuteType;
 
-public class ResponseConverter {
+public class CbrResponseConverter {
     public CurrencyRatesModel convert(ValCurs raw) {
         CurrencyRatesModel model = new CurrencyRatesModel();
         for(ValuteType val: raw.getValute()) {
