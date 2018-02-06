@@ -7,10 +7,9 @@ import org.simpleframework.xml.Root;
 
 @Root(name = "Envelope", strict = false)
 @NamespaceList({
-        @Namespace(reference = "http://www.gesmes.org/xml/2002-08-01", prefix = "gesmes"),
-        @Namespace(reference = "uhttp://www.ecb.int/vocabulary/2002-08-01/eurofxref")
+        @Namespace(reference="http://www.ecb.int/vocabulary/2002-08-01/eurofxref"),
+        @Namespace(reference="http://www.gesmes.org/xml/2002-08-01", prefix="gesmes")
 })
-
 public class EuBankResponseModel {
 
     @Element(name = "subject", required = false)
@@ -23,7 +22,6 @@ public class EuBankResponseModel {
     private CubesType cube;
 
     public EuBankResponseModel() {
-
     }
 
     public String getSubject() {

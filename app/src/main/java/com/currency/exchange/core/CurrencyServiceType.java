@@ -7,5 +7,6 @@ public enum CurrencyServiceType {
     LvBank,
     PlBank,
     EuBank,
-    MdBank
+    MdBank,
+    KgBank
 }

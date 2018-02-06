@@ -14,6 +14,7 @@ import com.currency.exchange.core.ExchangeRatesReceivedCallback;
 import com.currency.exchange.core.ICurrencyService;
 import com.currency.exchange.core.cbr.CbrService;
 import com.currency.exchange.core.eubank.EuBankService;
+import com.currency.exchange.core.kgbank.KgBankService;
 import com.currency.exchange.core.lvbank.LvBankService;
 import com.currency.exchange.core.mdbank.MdBankService;
 import com.currency.exchange.core.nbrb.NbrbService;
@@ -66,6 +67,7 @@ public class MainActivity extends AppCompatActivity {
         mServices.put(CurrencyServiceType.PlBank, new PlBankService());
         mServices.put(CurrencyServiceType.EuBank, new EuBankService());
         mServices.put(CurrencyServiceType.MdBank, new MdBankService());
+        mServices.put(CurrencyServiceType.KgBank, new KgBankService());
     }
 
     public void loadCbr(View view) {
